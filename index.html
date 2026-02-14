@@ -93,7 +93,7 @@
         .btn-close-book { background: #444; }
         .heart-seal { position: absolute; top: -30px; left: 50%; transform: translateX(-50%); width: 65px; height: 65px; background: #ff4d6d; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; font-size: 30px; z-index: 40; cursor: pointer; }
 
-        /* --- ADAPTACIÓN PARA CELULAR (SÓLO ADICIÓN) --- */
+        /* --- ADAPTACIÓN PARA CELULAR --- */
         @media (max-width: 600px) {
             .main-container { width: 90%; height: 250px; }
             .flap { border-left-width: 45vw; border-right-width: 45vw; border-top-width: 140px; }
@@ -102,15 +102,17 @@
             .scroll-content { padding: 40px 20px; }
             .scroll-content h2 { font-size: 1.6rem !important; }
             .book { width: 95%; height: 400px; flex-direction: column; }
-            .page-right { display: none; } /* En móvil se ve una página para que la foto sea grande */
-            .leaf { display: none !important; } /* Desactiva flip en móvil para evitar errores visuales */
+            .page-right { display: none; }
+            .leaf { display: none !important; }
             .polaroid img { height: 180px; }
         }
     </style>
 </head>
 <body>
 
-    <audio id="musica" loop><source src="https://www.bensound.com/bensound-music/bensound-midnightthoughts.mp3" type="audio/mpeg"></audio>
+    <audio id="musica" loop>
+        <source src="https://www.bensound.com/bensound-music/bensound-alongtheriver.mp3" type="audio/mpeg">
+    </audio>
 
     <div class="main-container" id="container">
         <div class="flap" onclick="abrirCarta()"></div>
@@ -185,7 +187,6 @@
         function cerrarAlbum() { document.getElementById('modalAlbum').style.display = 'none'; }
 
         function cambiarPagina(dir) {
-            // Ajuste de navegación para móvil (1 en 1) vs PC (2 en 2)
             let step = window.innerWidth <= 600 ? 1 : 2;
             let nIdx = index + (dir * step);
             if (nIdx < 0 || nIdx >= fotos.length) return;
